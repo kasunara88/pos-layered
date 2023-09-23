@@ -4,16 +4,23 @@
  */
 package pos.layered.view;
 
+import javax.swing.JOptionPane;
+import pos.layered.controller.CustomerController;
+import pos.layered.dto.CustomerDto;
+
 /**
  *
  * @author wmara
  */
 public class CustomerPanel extends javax.swing.JPanel {
 
+	private CustomerController customerController;
+
 	/**
 	 * Creates new form CustomerPanel
 	 */
 	public CustomerPanel() {
+		customerController = new CustomerController();
 		initComponents();
 	}
 
@@ -313,19 +320,19 @@ public class CustomerPanel extends javax.swing.JPanel {
         }// </editor-fold>//GEN-END:initComponents
 
         private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-                
+		addCustomer();
         }//GEN-LAST:event_saveButtonActionPerformed
 
         private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-               
+
         }//GEN-LAST:event_updateButtonActionPerformed
 
         private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-               
+
         }//GEN-LAST:event_deleteButtonActionPerformed
 
         private void custTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custTableMouseClicked
-                
+
         }//GEN-LAST:event_custTableMouseClicked
 
 
@@ -359,4 +366,28 @@ public class CustomerPanel extends javax.swing.JPanel {
         private javax.swing.JPanel tablePannel;
         private javax.swing.JButton updateButton;
         // End of variables declaration//GEN-END:variables
+
+	private void addCustomer() {
+		CustomerDto customerDto = new CustomerDto(custidText.getText(), custtitleText.getText(),
+			custNameText.getText(), custDOBText.getText(), Double.parseDouble(custSalaryText.getText()),
+			custAddressText.getText(), custCityText.getText(),
+			custProvinceText.getText(), custPostalText.getText());
+
+		String result = customerController.addCustomer(customerDto);
+		JOptionPane.showMessageDialog(this, result);
+		clear();
+	}
+
+	private void clear() {
+		custidText.setText("");
+		custtitleText.setText("");
+		custNameText.setText("");
+		custDOBText.setText("");
+		custSalaryText.setText("");
+		custAddressText.setText("");
+		custCityText.setText("");
+		custProvinceText.setText("");
+		custPostalText.setText("");
+	}
+
 }
