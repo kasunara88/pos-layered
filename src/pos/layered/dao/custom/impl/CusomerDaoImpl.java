@@ -79,7 +79,7 @@ public class CusomerDaoImpl implements CustomDao {
 	}
 
 	@Override
-	public ArrayList<CustomerEntity> gtAll() throws Exception {
+	public ArrayList<CustomerEntity> getAll() throws Exception {
 	ArrayList<CustomerEntity> customerEntitys = new ArrayList<>();
 	
 	ResultSet rst = CrudUtill.executeQuery("SELECT * FROM Customer");

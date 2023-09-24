@@ -2,18 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package pos.layered.dao;
+package pos.layered.dao.custom;
 
-import java.util.ArrayList;
+import pos.layered.dao.CrudDao;
+import pos.layered.entity.ItemEntity;
 
 /**
  *
  * @author wmara
  */
-public interface CrudDao<T, ID> extends SuperDao{
-	boolean add(T t);
-	boolean update(T t);
-	boolean delete(ID id);
-	T get(ID id);
-	ArrayList <T> getAll() throws Exception;
+public interface ItemDao extends CrudDao<ItemEntity, String>{
+	
 }

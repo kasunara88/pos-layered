@@ -5,6 +5,7 @@
 package pos.layered.service;
 
 import pos.layered.service.custom.impl.CustomerServiceImpl;
+import pos.layered.service.custom.impl.ItemServiceImpl;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ServiceFactory {
 			case CUSTOMER:
 				return new CustomerServiceImpl();
 			case ITEM:
-				return new CustomerServiceImpl();
+				return new ItemServiceImpl();
 
 			default:
 				return null;

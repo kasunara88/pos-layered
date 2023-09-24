@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public String updateCustomer(CustomerDto dto) throws Exception {
-	CustomerEntity ce = new CustomerEntity(dto.getId(), dto.getTitle(), dto.getName(), dto.getDob(),
+		CustomerEntity ce = new CustomerEntity(dto.getId(), dto.getTitle(), dto.getName(), dto.getDob(),
 			dto.getSalary(), dto.getAddress(), dto.getCity(), dto.getProvince(), dto.getZip());
 
 		if (customerdao.update(ce)) {
@@ -46,7 +46,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public String deleteCustomer(String id) throws Exception {
-	if (customerdao.delete(id)) {
+		if (customerdao.delete(id)) {
 			return "Successfully Delete";
 		} else {
 			return "Fail";
@@ -55,23 +55,23 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDto getCustomer(String id) throws Exception {
-	CustomerEntity entity = customerdao.get(id);
-	return new CustomerDto(entity.getId(), entity.getTitle(), entity.getName(), entity.getDob(),
+		CustomerEntity entity = customerdao.get(id);
+		return new CustomerDto(entity.getId(), entity.getTitle(), entity.getName(), entity.getDob(),
 			entity.getSalary(), entity.getAddress(), entity.getCity(), entity.getProvince(), entity.getZip());
 	}
 
 	@Override
 	public ArrayList<CustomerDto> getAllCustomer() throws Exception {
 		ArrayList<CustomerDto> customerDtos = new ArrayList<>();
-		ArrayList<CustomerEntity> customerEntitys = customerdao.gtAll();
-		
-		for(CustomerEntity entity : customerEntitys) {
+		ArrayList<CustomerEntity> customerEntitys = customerdao.getAll();
+
+		for (CustomerEntity entity : customerEntitys) {
 			CustomerDto dto = new CustomerDto(entity.getId(), entity.getTitle(), entity.getName(), entity.getDob(),
-			entity.getSalary(), entity.getAddress(), entity.getCity(), entity.getProvince(), entity.getZip());
+				entity.getSalary(), entity.getAddress(), entity.getCity(), entity.getProvince(), entity.getZip());
 			customerDtos.add(dto);
 		}
 		return customerDtos;
-		
+
 	}
 
 }
